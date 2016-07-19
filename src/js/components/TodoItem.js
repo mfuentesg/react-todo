@@ -11,9 +11,9 @@ export default class TodoItem extends React.Component {
   }
 
   render() {
-    return <li>
+    return <li className = "todo-item">
       {this.props.title}
-      <a href = "#" onClick = {this.remove}>X</a>
+      <a href = "#" onClick = {this.remove}>x</a>
     </li>
   }
 }

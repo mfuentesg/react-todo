@@ -20,7 +20,8 @@ export default class TodoForm extends React.Component {
 
   render() {
     return <form onSubmit={this.addItem} className="todo-form">
-      <input type="text" ref = "title" name = "title"/>
+      <label htmlFor = "title">Write your task</label>
+      <input type="text" ref = "title" name = "title" id = "title" autoComplete="off"/>
     </form>
   }
 }
