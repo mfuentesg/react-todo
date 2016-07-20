@@ -1,17 +1,22 @@
-import React from 'react';
-import { createRenderer } from 'react-addons-test-utils';
-import createComponent from 'react-unit';
-import tape from 'tape';
-import addAssertions from 'extend-tape';
-import jsxEquals from 'tape-jsx-equals';
+jest.unmock('../src/js/components/Todo');
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 import TodoItem from '../src/js/components/TodoItem';
 
-const test = addAssertions(tape, {jsxEquals});
+describe('TodoItem', () => {
+  it('some describe', () => {
+    const itemTitle = 'my awesome title';
+    const item = TestUtils.renderIntoDocument(
+      <ul>  
+        <TodoItem title = {itemTitle} key = {'item1'} id = {1} remove = {() => {}} />
+      </ul>
+    );
+    
+    const itemNode = ReactDOM.findDOMNode(item);
 
-test('A minimal test', (t) => {
-  const todoItem = createComponent.shallow(<TodoItem />);
-
-  t.equal('something', 'something', 'are not equals');
+    expect(itemNode.textContent).toEqual(itemTitle);
+  });
 });
 
